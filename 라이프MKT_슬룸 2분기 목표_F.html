@@ -1,0 +1,1233 @@
+<html lang="ko"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라이프마케팅실 2분기 전략 보고</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4f0; --surface: #ffffff; --surface2: #f0efe9; --border: #e2e0d8;
+    --accent: #2c5f8a; --accent-light: #e8eef5;
+    --accent2: #3a6b4a; --accent2-light: #e8f2eb;
+    --purple: #5b4a8b; --purple-light: #eeebf7;
+    --warn: #b35c00; --warn-light: #fef3e2;
+    --danger: #c0392b; --danger-light: #fdf0ee;
+    --text: #1e1e1e; --text-muted: #666; --text-dim: #aaa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.7; }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--border); padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; background: rgba(245,244,240,0.96);
+    backdrop-filter: blur(12px); z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .logo-mark {
+    width: 30px; height: 30px; background: var(--accent); border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+  }
+  .header-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .header-sub   { font-size: 12px; color: var(--text-dim); }
+  .btn {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-muted); padding: 7px 14px; border-radius: 8px;
+    cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 500;
+    transition: all 0.18s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  .main { max-width: 980px; margin: 0 auto; padding: 52px 48px 100px; }
+
+  /* HERO */
+  .hero {
+    margin-bottom: 52px; padding-bottom: 44px; border-bottom: 2px solid var(--border);
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end;
+  }
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .hero h1 { font-size: 38px; font-weight: 900; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { color: var(--text-muted); font-size: 14px; max-width: 520px; line-height: 1.8; }
+  .hero-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .hero-chip {
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim);
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 56px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .section-num   { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+  .section-line  { flex: 1; height: 1px; background: var(--border); }
+
+  /* BADGE */
+  .b { font-family:'DM Mono',monospace; font-size:11px; padding:2px 8px; border-radius:5px; white-space:nowrap; font-weight:500; display:inline-block; }
+  .b-blue   { background:var(--accent-light); color:var(--accent); border:1px solid #bfd0e0; }
+  .b-green  { background:var(--accent2-light); color:var(--accent2); border:1px solid #c5dfc9; }
+  .b-purple { background:var(--purple-light); color:var(--purple); border:1px solid #c9c0e0; }
+  .b-warn   { background:var(--warn-light); color:var(--warn); border:1px solid #f0c88a; }
+  .b-danger { background:var(--danger-light); color:var(--danger); border:1px solid #f0b8b0; }
+  .b-gray   { background:var(--surface2); color:var(--text-muted); border:1px solid var(--border); }
+
+  /* ── SECTION 00: Q1 vs Q2 나란히 ── */
+  .q-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .q-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .q-box-head { padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .q-box-head.q1 { background: var(--surface2); }
+  .q-box-head.q2 { background: var(--accent); }
+  .q-box-label { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; }
+  .q-box-head.q1 .q-box-label { color: var(--text-muted); }
+  .q-box-head.q2 .q-box-label { color: rgba(255,255,255,0.75); }
+  .q-box-tag { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 20px; }
+  .q-box-head.q1 .q-box-tag { background: var(--border); color: var(--text-dim); }
+  .q-box-head.q2 .q-box-tag { background: rgba(255,255,255,0.2); color: #fff; }
+  .q-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .q-metric { background: var(--surface); padding: 14px 18px; }
+  .q-metric-label { font-size: 11px; color: var(--text-dim); margin-bottom: 3px; }
+  .q-metric-value { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .q-metric-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .c-danger { color: var(--danger); }
+  .c-warn   { color: var(--warn); }
+  .c-green  { color: var(--accent2); }
+  .c-blue   { color: var(--accent); }
+  .c-purple { color: var(--purple); }
+
+  /* ── Q1 진단 리스트 ── */
+  .diag-list { display: flex; flex-direction: column; gap: 8px; }
+  .diag-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px;
+  }
+  .diag-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .diag-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .diag-desc  { font-size: 12px; color: var(--text-muted); line-height: 1.75; }
+  .diag-desc p { margin: 0 0 4px; }
+
+  /* ── STRATEGY PILLARS ── */
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pillar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .pillar-num  { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); margin-bottom: 6px; }
+  .pillar-title { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  .pillar-list  { list-style: none; padding: 0; }
+  .pillar-list li { font-size: 12px; color: var(--text-muted); padding: 3px 0 3px 12px; position: relative; line-height: 1.6; }
+  .pillar-list li::before { content: '▪'; position: absolute; left: 0; color: var(--text-dim); font-size:10px; top:2px; }
+
+  /* ── LAUNCH CALENDAR ── */
+  .cal-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .cal-col-head {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid;
+  }
+  .launch-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+  .launch-card-head {
+    padding: 8px 14px; border-bottom: 1px solid var(--border); background: var(--surface2);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .launch-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); }
+  .launch-name { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+  .launch-target-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 3px; }
+  .launch-target-label { font-size: 11px; color: var(--text-dim); }
+
+  /* ── TEAM CARDS ── */
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .team-card-head { padding: 14px 20px; }
+  .team-badge { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .team-name  { font-size: 16px; font-weight: 700; }
+  .team-lead  { font-size: 12px; margin-top: 2px; opacity: 0.75; }
+  .team-body  { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 14px; }
+  .team-section-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 7px; display: flex; align-items: center; gap: 8px;
+  }
+  .team-section-title::after { content:''; flex:1; height:1px; background:var(--border); }
+  .team-kpi-row { display: flex; flex-direction: column; gap: 5px; }
+  .team-kpi-item { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+  .team-kpi-label { color: var(--text-muted); }
+  .team-list { list-style: none; padding: 0; }
+  .team-list li { font-size: 12px; color: var(--text-muted); padding: 2px 0 2px 12px; position: relative; line-height: 1.6; }
+  .team-list li::before { content: '▪'; position: absolute; left: 0; color: var(--text-dim); font-size: 10px; top: 2px; }
+  .team-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── MONTHLY STRATEGY ── */
+  .month-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .month-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .month-head { padding: 14px 18px; color: #fff; }
+  .month-label { font-family: 'DM Mono', monospace; font-size: 10px; opacity: 0.8; margin-bottom: 3px; }
+  .month-title { font-size: 14px; font-weight: 700; }
+  .month-target { font-size: 12px; margin-top: 6px; opacity: 0.9; }
+  .month-body { padding: 14px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .month-strategy-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .month-strategy-title::after { content:''; flex:1; height:1px; background:var(--border); }
+  .month-list { list-style: none; padding: 0; }
+  .month-list li { font-size: 12px; color: var(--text-muted); padding: 2px 0 2px 12px; position: relative; }
+  .month-list li::before { content:'▪'; position:absolute; left:0; color:var(--text-dim); font-size:10px; top:2px; }
+  .month-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── TARGET TABLE ── */
+  .dual-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .dual-table th {
+    padding: 9px 12px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; border-bottom: 1px solid var(--border);
+    background: var(--surface2); text-align: center; color: var(--text-dim);
+  }
+  .dual-table th:first-child { text-align: left; }
+  .dual-table td { padding: 11px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; text-align: center; }
+  .dual-table td:first-child { text-align: left; font-weight: 600; font-size: 13px; }
+  .dual-table tr:last-child td { border-bottom: none; }
+  .dual-table tbody tr:hover td { background: var(--surface2); }
+  .dual-table .total-row td { background: var(--surface2); font-weight: 700; border-top: 2px solid var(--border); }
+  .ideal-col { background: rgba(58,107,74,0.04); }
+  .real-col  { background: rgba(44,95,138,0.04); }
+  .col-h-ideal { background: var(--accent2) !important; color: #fff !important; }
+  .col-h-real  { background: var(--accent) !important; color: #fff !important; }
+
+  /* ── PREP TABLE ── */
+  .prep-table { width: 100%; border-collapse: collapse; }
+  .prep-table th {
+    padding: 9px 14px; font-size: 10px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--text-dim);
+    border-bottom: 1px solid var(--border); background: var(--surface2); text-align: left;
+  }
+  .prep-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 12px; color: var(--text-muted); }
+  .prep-table tr:last-child td { border-bottom: none; }
+  .prep-table tbody tr:hover td { background: var(--surface2); }
+
+  /* ── EXECUTIVE ALIGN ── */
+  .exec-list { display: flex; flex-direction: column; gap: 10px; }
+  .exec-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+  }
+  .exec-num  { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 700; flex-shrink: 0; color: var(--text-dim); line-height: 1.4; }
+  .exec-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .exec-desc  { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+  /* EDIT MODE */
+  .edit-banner {
+    display: none; align-items: center; gap: 8px;
+    background: var(--accent-light); border-bottom: 1px solid #bfd0e0;
+    padding: 9px 48px; font-size: 12px; color: var(--accent);
+  }
+  body.edit-mode .edit-banner { display: flex; }
+  .edit-banner-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  .btn.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+  [contenteditable="true"] {
+    outline: none; border-radius: 3px;
+    background: #fffbe6; border-bottom: 1px dashed #d4b800;
+    cursor: text; min-width: 20px; display: inline;
+    transition: background 0.15s;
+  }
+  [contenteditable="true"]:focus { background: #fff8d6; border-bottom-color: #b89a00; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* ── SIDE NAV ── */
+  .layout-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .side-nav {
+    position: sticky;
+    top: 80px;
+    width: 200px;
+    flex-shrink: 0;
+    padding: 24px 0 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .side-nav .nav-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 0 10px 8px;
+  }
+  .side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .side-nav a .nav-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    width: 16px;
+  }
+  .side-nav a:hover {
+    background: var(--surface);
+    color: var(--text);
+  }
+  .side-nav a.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    border-left-color: var(--accent);
+    font-weight: 700;
+  }
+  .side-nav a.active .nav-num {
+    color: var(--accent);
+  }
+  .main {
+    flex: 1;
+    min-width: 0;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  @media (max-width: 1100px) {
+    .side-nav { display: none; }
+    .layout-wrapper { display: block; }
+  }
+</style>
+</head>
+<body class="">
+
+<div class="header">
+  <div class="header-left">
+    <div class="logo-mark">LM</div>
+    <div>
+      <div class="header-title">라이프마케팅실 2분기 전략 보고</div>
+      <div class="header-sub">2026년 4월 — 6월 · 경영진 보고용</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button class="btn" id="editBtn" onclick="toggleEdit()"><span>✏️</span><span>수정하기</span></button>
+    <button class="btn" onclick="window.print()"><span>🖨</span><span>인쇄</span></button>
+    <button class="btn" onclick="downloadHTML()"><span>⬇︎</span><span>다운로드</span></button>
+  </div>
+</div>
+
+<div class="edit-banner">
+  <div class="edit-banner-dot"></div>
+  수정 모드 — 텍스트를 클릭해서 바로 편집하세요. 완료 후 <strong style="margin:0 4px;">수정 완료</strong> 버튼을 누르면 저장됩니다.
+</div>
+
+<div class="layout-wrapper">
+  <nav class="side-nav" id="sideNav"></nav>
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow" spellcheck="false">라이프마케팅실 · 2026 Q2</div>
+      <h1 spellcheck="false">기반을 완성하고<br><em>성장 궤도에 오른다</em></h1>
+      <div class="hero-sub" spellcheck="false">3팀 운영 체계 완성 + 신제품 7종 성공 런칭 + 수익구조 개선<br>2분기는 하반기 스케일업을 위한 기반을 실제 성과로 증명하는 분기</div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-chip" spellcheck="false">분기 매출 목표 59억</div>
+      <div class="hero-chip" spellcheck="false">분기 공헌이익 목표 7.5억</div>
+      <div class="hero-chip" spellcheck="false">신제품 7종 런칭</div>
+      <div class="hero-chip" spellcheck="false">공헌이익률 12%</div>
+    </div>
+  </div>
+
+
+  <!-- ── 00. 현황 & 목표 한눈에 ── -->
+  <div class="section" id="sec-01">
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title" spellcheck="false">1분기 현황 &amp; 2분기 목표</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+
+      <!-- Q1 박스 -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="padding:14px 20px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:700;" spellcheck="false">1분기 실적 <span style="font-weight:400;color:var(--text-muted);">(3/11 기준)</span></span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;background:var(--border);color:var(--text-dim);padding:2px 8px;border-radius:20px;">결산 예정</span>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;" spellcheck="false">총 매출</div>
+              <div style="font-size:26px;font-weight:800;letter-spacing:-0.02em;" spellcheck="false">21.9억</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;" spellcheck="false">3월 환산 약 27~30억</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;" spellcheck="false">공헌이익률</div>
+              <div style="font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--warn);" spellcheck="false">7.2%</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;" spellcheck="false">수익구조 개선 필요</div>
+            </div>
+          </div>
+          <div style="height:1px;background:var(--border);"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div>
+              <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;" spellcheck="false">목베개플러스 비중</div>
+              <div style="font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--danger);" spellcheck="false">71%</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;" spellcheck="false">단일 SKU 집중 리스크</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px;" spellcheck="false">발편한케어 공헌이익률</div>
+              <div style="font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--danger);" spellcheck="false">3%</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:2px;" spellcheck="false">흑자 전환 필요</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 박스 -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="padding:14px 20px;background:var(--accent);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:700;color:#fff;" spellcheck="false">2분기 목표</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;background:rgba(255,255,255,0.2);color:#fff;padding:2px 8px;border-radius:20px;">Apr — Jun</span>
+        </div>
+
+        <!-- 핵심 수치 - 매출/공헌이익 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+          <div style="padding:18px 20px;background:#eaf2fb;">
+            <div style="font-size:11px;color:var(--accent);font-weight:600;margin-bottom:4px;" spellcheck="false">분기 매출 목표</div>
+            <div style="font-size:32px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;" spellcheck="false">59억</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" spellcheck="false">4월 17억 · 5월 20억 · 6월 22억</div>
+          </div>
+          <div style="padding:18px 20px;background:#e8f4ec;">
+            <div style="font-size:11px;color:var(--accent2);font-weight:600;margin-bottom:4px;" spellcheck="false">분기 공헌이익 목표</div>
+            <div style="font-size:32px;font-weight:900;color:var(--accent2);letter-spacing:-0.03em;" spellcheck="false">7.5억</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" spellcheck="false">월 2.5억 × 3개월 — 전사 마지노선</div>
+          </div>
+        </div>
+
+        <!-- 목베개 비중 -->
+        <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:12px;color:var(--text-muted);" spellcheck="false">목베개 비중 목표 <span style="font-size:11px;color:var(--text-dim);">(V2 포함 시리즈 합산)</span></span>
+          <span style="font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.02em;" spellcheck="false">50% 이하</span>
+        </div>
+
+        <!-- 허편케 / 발편케 -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+          <div style="padding:14px 20px;background:#f7f5ff;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">허리편한케어</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:2px;" spellcheck="false">공헌이익률</div>
+            <div style="font-size:24px;font-weight:800;color:var(--purple);letter-spacing:-0.02em;" spellcheck="false">5%+</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:3px;" spellcheck="false">볼륨 확대로 재고 소진 병행</div>
+          </div>
+          <div style="padding:14px 20px;background:#f0f7f2;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">발편한케어</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-bottom:2px;" spellcheck="false">공헌이익률 목표</div>
+            <div style="font-size:24px;font-weight:800;color:var(--accent2);letter-spacing:-0.02em;" spellcheck="false">8%</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:3px;" spellcheck="false">5월 흑자 전환 후 수익 구조 개선</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ── 02. 분기 목표에 따른 개선 포인트 ── -->
+  <div class="section" id="sec-02">
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title" spellcheck="false">분기 목표에 따른 꼭 개선 필요한 지점</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="diag-list">
+      <div class="diag-item" style="border-left:3px solid var(--purple);">
+        <div class="diag-icon">🟣</div>
+        <div>
+          <div class="diag-title" spellcheck="false">허편케·발편케 공헌이익 목표 설정 — 재고 소진 병행</div>
+          <div class="diag-desc" spellcheck="false">▪️ <strong>허편케</strong> : 공헌이익 5% 유지하며 매출 볼륨 확장 드라이브, 재고 소진 속도에 집중 💥 허리V3 출시 전 최대한 소진 필요<br>▪️ <strong>발편케</strong> : 공헌이익 8%, 재고 소진 속도에 따라 10%까지 상향 고려 💥 V2 자연 업셀링, V1 재고 소진에 리소스 집중</div>
+        </div>
+      </div>
+      <div class="diag-item" style="border-left:3px solid var(--warn);">
+        <div class="diag-icon">🟠</div>
+        <div>
+          <div class="diag-title" spellcheck="false">목베개플러스 71% 의존 — 포트폴리오 분산 (무리X, 리스크 낮게)</div>
+          <div class="diag-desc" spellcheck="false">▪️ 목마사지베개V2 런칭으로 캐시카우를 V2로 전환, 목베개플러스는 6월 내 단종 또는 외부몰 플레이 전환<br>▪️ V2 일 2,000만원 달성 및 베개 카테고리 매출 파이 확장 (최대 5천만) + 전체 매출 50~60% 유지가 핵심 목표</div>
+        </div>
+      </div>
+      <div class="diag-item" style="border-left:3px solid var(--accent2);">
+        <div class="diag-icon">🟢</div>
+        <div>
+          <div class="diag-title" spellcheck="false">흑자 전환 흐름 유지 — 구조 확장</div>
+          <div class="diag-desc" spellcheck="false">12월 적자에서 1분기 흑자 전환까지 흐름을 이어, 4팀 운영 체계가 완성되는 2분기부터 성장 드라이브가 가능한 구조 만들기</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 03. 2분기 전략 방향 ── -->
+  <div class="section" id="sec-03">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title" spellcheck="false">2분기 전략 방향 — 3개 축</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card" style="border-top:3px solid var(--accent);">
+        <div class="pillar-num">PILLAR 01</div>
+        <div class="pillar-title" style="color:var(--accent);" spellcheck="false">팀 체계 완성</div>
+        <ul class="pillar-list">
+          <li spellcheck="false">1팀 허근+익환 투톱 역할 확립 및 퍼포먼스 고도화</li>
+          <li spellcheck="false">2팀 희강님 온보딩 + PD→마케터 전환 진단</li>
+          <li spellcheck="false">3팀 오도근님 온보딩 + 부진 SKU 오너십 부여</li>
+          <li spellcheck="false">3팀장 + 실장 격주 싱크 미팅 정착</li>
+          <li spellcheck="false">팀별 KPI 설정 + 주간 성과 리뷰 루틴 구축</li>
+          <li spellcheck="false">6월 말 Q3 바텀업 사업계획 수립 전환</li>
+        </ul>
+      </div>
+      <div class="pillar-card" style="border-top:3px solid var(--accent2);">
+        <div class="pillar-num">PILLAR 02</div>
+        <div class="pillar-title" style="color:var(--accent2);" spellcheck="false">신제품 7종 성공 런칭</div>
+        <ul class="pillar-list">
+          <li spellcheck="false">목마사지베개V2 — 일 2,000만원 달성으로 베개 카테고리 매출 파이 확장 + 전체 매출 50% 유지</li>
+          <li spellcheck="false">골반마사지기 — 블루오션 선점 (경쟁사 미진입)</li>
+          <li spellcheck="false">팔꿈치·관절 시리즈 — 27년 무릎마사지기 연결 기반</li>
+          <li spellcheck="false">인플 2종(바디풀·훌라핏) — BM팀+2팀 주도, 5월 가정의달 최대 드라이브</li>
+          <li spellcheck="false">허리V3·넥코어 — 기존 카테고리 확장</li>
+          <li spellcheck="false">D2C·BM팀 협업으로 풀 퍼널 전환 구조 완성</li>
+        </ul>
+      </div>
+      <div class="pillar-card" style="border-top:3px solid var(--purple);">
+        <div class="pillar-num">PILLAR 03</div>
+        <div class="pillar-title" style="color:var(--purple);" spellcheck="false">수익구조 개선</div>
+        <ul class="pillar-list">
+          <li spellcheck="false">발편한케어 공헌이익률 8% 달성 — 5월 흑자 전환 후 8%까지 수익 구조 개선</li>
+          <li spellcheck="false">허리편한케어 공헌이익률 5%+ 유지 + 볼륨 확대로 재고 소진 집중</li>
+          <li spellcheck="false">목베개 플러스+V2 합산 시리즈 단위 CI 관리</li>
+          <li spellcheck="false">신제품 초기 ROAS 검증 → Q3 스케일업 기반</li>
+          <li spellcheck="false">전체 공헌이익률 7.2% → 12~14% 달성 (정상 구조 15%, 신제품 드라이브 감안)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 02. 팀별 핵심 목표 & 전략 ── -->
+  <div class="section" id="sec-04">
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title" spellcheck="false">팀별 핵심 목표 &amp; 전략</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="team-grid">
+
+      <!-- 마케팅 1팀 -->
+      <div class="team-card">
+        <div class="team-card-head" style="background:linear-gradient(135deg,var(--accent) 0%,#1e4a70 100%);">
+          <div class="team-badge" style="color:rgba(255,255,255,0.6);">마케팅 1팀</div>
+          <div class="team-name" style="color:#fff;" spellcheck="false">캐시카우 유지 + V2 킬러 전환</div>
+          <div class="team-lead" style="color:rgba(255,255,255,0.7);" spellcheck="false">허근 팀장 · 김익환 PM</div>
+        </div>
+        <div class="team-body">
+          <div>
+            <div class="team-section-title">핵심 목표 (KPI)</div>
+            <div class="team-kpi-row">
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">목베개플러스 월 매출</span>
+                <span class="b b-blue">6.5억 유지</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">목마사지베개V2 일 매출</span>
+                <span class="b b-green">일 2,000만 목표</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">목베개 시리즈 공헌이익률</span>
+                <span class="b b-blue">10%+</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="team-section-title">2분기 전략</div>
+            <ul class="team-list">
+              <li spellcheck="false"><strong>V2 킬콘 소재 집중 제작</strong> — V1 vs V2 비교 메시지, 채널별 최적화</li>
+              <li spellcheck="false"><strong>플러스+V2 합산 시리즈 관리</strong> — V2 잠식 고려, 합산 매출 순증 유지</li>
+              <li spellcheck="false"><strong>1팀 투톱 역할 명확화</strong> — 허근(전략·최종 판단) / 익환(전략 보완·실행)</li>
+              <li spellcheck="false">가정의달 5월 목베개 시리즈 집중 프로모션 주도</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 마케팅 2팀 -->
+      <div class="team-card">
+        <div class="team-card-head" style="background:linear-gradient(135deg,#2e7d52 0%,var(--accent2) 100%);">
+          <div class="team-badge" style="color:rgba(255,255,255,0.6);">마케팅 2팀</div>
+          <div class="team-name" style="color:#fff;" spellcheck="false">킬콘 발굴 + 팀 체질 전환</div>
+          <div class="team-lead" style="color:rgba(255,255,255,0.7);" spellcheck="false">우희강 팀장 (3/16 입사)</div>
+        </div>
+        <div class="team-body">
+          <div>
+            <div class="team-section-title">핵심 목표 (KPI)</div>
+            <div class="team-kpi-row">
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">킬콘 후보 SKU 발굴</span>
+                <span class="b b-green">3개 이상</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">소재 테스트 (디벨롭)</span>
+                <span class="b b-green">월 10건+ 페이스</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">PD→마케터 전환 진단</span>
+                <span class="b b-blue">6월 중 완료</span>
+              </div>
+            </div>
+          </div>
+          <!-- 개인별 소재 KPI -->
+          <div>
+            <div class="team-section-title">개인별 월간 소재 KPI</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <!-- 정량 -->
+              <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;">
+                <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--text-dim);margin-bottom:8px;">정량</div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">VI</span>
+                  <span class="b b-blue" style="font-size:10px;">최소 6건 / 목표 8건</span>
+                </div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">베리에이션</span>
+                  <span class="b b-green" style="font-size:10px;">10건+</span>
+                </div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">디벨롭</span>
+                  <span class="b b-green" style="font-size:10px;">5건+</span>
+                </div>
+                <div class="team-kpi-item" style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);">
+                  <span class="team-kpi-label" style="font-weight:700;color:var(--text);" spellcheck="false">합계</span>
+                  <span class="b b-gray" style="font-size:10px;">최소 21건 / 목표 31건+</span>
+                </div>
+              </div>
+              <!-- 정성 -->
+              <div style="background:var(--surface2);border-radius:8px;padding:10px 12px;">
+                <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:var(--text-dim);margin-bottom:8px;">정성</div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">ROAS</span>
+                  <span style="font-size:11px;color:var(--text-muted);" spellcheck="false">SKU별 GA 목표 달성</span>
+                </div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">광고비</span>
+                  <span style="font-size:11px;color:var(--text-muted);" spellcheck="false">담당 SKU 월 목표 달성</span>
+                </div>
+                <div class="team-kpi-item" style="margin-bottom:4px;">
+                  <span class="team-kpi-label" spellcheck="false">CTR</span>
+                  <span class="b b-blue" style="font-size:10px;">전체 1.4% 달성 기여</span>
+                </div>
+                <div class="team-kpi-item">
+                  <span class="team-kpi-label" spellcheck="false">빈도 관리</span>
+                  <span class="b b-warn" style="font-size:10px;">담당 SKU 1.5 이하</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="team-section-title">2분기 전략</div>
+            <ul class="team-list">
+              <li spellcheck="false"><strong>팀원 역량 진단</strong> — 5명 PD의 마케터 전환 가능 여부 1개월 내 판단</li>
+              <li spellcheck="false"><strong>데이터×크리에이티브 루프</strong> — ROAS 데이터 기반 소재 방향 도출 프로세스 정착</li>
+              <li spellcheck="false"><strong>1팀 협업</strong> — 목베개 시리즈 킬콘 소재 공동 제작</li>
+              <li spellcheck="false"><strong>바디풀고컷·훌라핏벨트 소재 지원</strong> — BM팀 인플 메인 진행, 2팀 광고 소재 제작·집행 서포트</li>
+              <li spellcheck="false">전환 어려울 경우 퍼포마케터 채용 플랜 수립 (6월)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 마케팅 3팀 -->
+      <div class="team-card">
+        <div class="team-card-head" style="background:linear-gradient(135deg,var(--purple) 0%,#3d2e6b 100%);">
+          <div class="team-badge" style="color:rgba(255,255,255,0.6);">마케팅 3팀</div>
+          <div class="team-name" style="color:#fff;" spellcheck="false">부진 회생 + 신카테고리 선점</div>
+          <div class="team-lead" style="color:rgba(255,255,255,0.7);" spellcheck="false">오도근 팀장 (3/30 입사)</div>
+        </div>
+        <div class="team-body">
+          <div>
+            <div class="team-section-title">핵심 목표 (KPI)</div>
+            <div class="team-kpi-row">
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">발편한케어 공헌이익률</span>
+                <span class="b b-purple">5월 흑자 전환 → 8% 달성</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">허리편한케어 공헌이익률</span>
+                <span class="b b-purple">5%+ 유지 · 볼륨 확대</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">골반마사지기 일 매출</span>
+                <span class="b b-green">5월 일 300만 · 6월 일 350만</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="team-section-title">2분기 전략</div>
+            <ul class="team-list">
+              <li spellcheck="false"><strong>부진 SKU 전수 진단</strong> — 소재·타겟·채널·상세페이지 전 영역 (4월)</li>
+              <li spellcheck="false"><strong>발편한케어 수익화 플랜</strong> — 5월 흑자 전환 후 공헌이익률 8% 목표. 적자 채널 중단 + 소재 교체 + 비용 구조 개선</li>
+              <li spellcheck="false"><strong>허리편한케어 공헌이익률 5%+ 유지 + 볼륨 확대</strong> — 공격적 운영으로 재고 소진 집중, 채널 효율화 + 허리V3 런칭 시너지 연계</li>
+              <li spellcheck="false"><strong>허리 카테고리 매출 확장</strong> — 허리편한케어 분기 4.5억 달성 + 6/15 허리V3 런칭으로 허리 라인업 강화</li>
+              <li spellcheck="false"><strong>골반마사지기 GTM</strong> — 타겟·메시지·채널 설계 + 블루오션 선점 속도전</li>
+              <li spellcheck="false"><strong>팔꿈치→무릎 관절 로드맵</strong> — 27년 확장 기반 설계</li>
+              <li spellcheck="false">세일즈·운영·상품·D2C·MD허브팀 협업 구조 직접 구축</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2C팀 -->
+      <div class="team-card">
+        <div class="team-card-head" style="background:linear-gradient(135deg,#5a6a3a 0%,#3a4a2a 100%);">
+          <div class="team-badge" style="color:rgba(255,255,255,0.6);">D2C팀</div>
+          <div class="team-name" style="color:#fff;" spellcheck="false">구매설득력 강화 + CRM 수익 기여</div>
+          <div class="team-lead" style="color:rgba(255,255,255,0.7);" spellcheck="false">이수지 팀장 겸직</div>
+        </div>
+        <div class="team-body">
+          <div>
+            <div class="team-section-title">핵심 목표 (KPI)</div>
+            <div class="team-kpi-row">
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">CRM 전체 매출 기여</span>
+                <span class="b b-gray">전체 매출 15% of</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">CRM ROAS</span>
+                <span class="b b-gray">350%+ 유지</span>
+              </div>
+              <div class="team-kpi-item">
+                <span class="team-kpi-label" spellcheck="false">바이럴 매출 기여</span>
+                <span class="b b-gray">전체 매출 1% of</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="team-section-title">2분기 전략</div>
+            <ul class="team-list">
+              <li spellcheck="false"><strong>인터페이스 UIUX 리뉴얼</strong> — 사이트 전반 구매 흐름 개선 + 전환율 제고</li>
+              <li spellcheck="false"><strong>자산 콘텐츠(구매설득력) 확장</strong> — 제품별 구매 설득 콘텐츠 제작·고도화</li>
+              <li spellcheck="false"><strong>상품 상세페이지 디벨롭 고도화</strong> — 전 SKU 상세페이지 전환 구조 점검 및 개선</li>
+              <li spellcheck="false"><strong>CRM 고객 LTV 관리 체계 구축 준비</strong> — 신규·재구매 세그먼트 설계, 장기 리텐션 구조 기반 마련</li>
+              <li spellcheck="false"><strong>바이럴 매출 확장</strong> — BM팀 협업으로 인플 콘텐츠 확산 구조 연결, 전체 매출 1% 기여 달성</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 05. 신제품 7종 런칭 캘린더 ── -->
+  <div class="section" id="sec-05">
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title" spellcheck="false">신제품 7종 런칭 캘린더 — 목표 수치</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="cal-grid">
+      <!-- 4월 -->
+      <div>
+        <div class="cal-col-head" style="color:var(--accent);border-color:var(--accent);">4월</div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">4월 초</span>
+            <span class="b b-gray">퍼포먼스 메인</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">목마사지베개 V2</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">목표</span><span class="b b-green">일 2,000만원</span></div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false" style="font-size:11px;color:var(--text-dim);">2차: 3개월 내 일 500만 · 공헌이익 10%</span></div>
+          </div>
+        </div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">4/27</span>
+            <span class="b b-gray">블루오션 선점</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">골반마사지기</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">4월</span><span class="b b-gray">일 200만 (4/27~, 4일)</span></div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">5월</span><span class="b b-blue">일 300만 · 공헌이익 5%</span></div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">6월</span><span class="b b-green">일 350만 · 공헌이익 10%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5월 -->
+      <div>
+        <div class="cal-col-head" style="color:var(--accent2);border-color:var(--accent2);">5월 🎁 가정의달</div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">5/16~</span>
+            <span class="b b-gray">관절 카테고리 확장</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">팔꿈치마사지기</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">목표</span><span class="b b-green">3개월 내 일 200만 · 공헌이익 10%</span></div>
+          </div>
+        </div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">5/26</span>
+            <span class="b b-gray">인플루언서 메인</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">바디풀고컷</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">목표</span><span class="b b-warn">인플 선정 후 확정</span></div>
+          </div>
+        </div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">5/27</span>
+            <span class="b b-gray">인플루언서 메인</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">훌라핏벨트</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">목표</span><span class="b b-warn">인플 선정 후 확정</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6월 -->
+      <div>
+        <div class="cal-col-head" style="color:var(--purple);border-color:var(--purple);">6월</div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">6/15</span>
+            <span class="b b-gray">업그레이드 버전</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">허리마사지기 V3</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">목표</span><span class="b b-purple">V2 매출 +30%</span></div>
+          </div>
+        </div>
+        <div class="launch-card">
+          <div class="launch-card-head">
+            <span class="launch-date">6/29</span>
+            <span class="b b-gray">목 스트레칭 신카테고리</span>
+          </div>
+          <div style="padding:12px 14px;">
+            <div class="launch-name" spellcheck="false">넥코어 목마사지</div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">1차</span><span class="b b-blue">1개월 내 일 300만 · 공헌이익 5%</span></div>
+            <div class="launch-target-row"><span class="launch-target-label" spellcheck="false">2차</span><span class="b b-green">3개월 내 일 500만 · 공헌이익 10%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;padding:12px 18px;background:var(--warn-light);border:1px solid #f0c88a;border-radius:10px;font-size:12px;color:var(--warn);">
+      ⚠️ <strong>바디풀고컷·훌라핏벨트</strong> 매출 목표는 인플루언서 선정 완료(4월 말) 시점에 확정 필요. 확정 후 월별 총 매출 목표 업데이트 예정.
+    </div>
+  </div>
+
+
+  <!-- ── 06. 월별 매출 드라이브 전략 ── -->
+  <div class="section" id="sec-06">
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title" spellcheck="false">월별 매출 드라이브 전략</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="month-grid">
+
+      <!-- 4월 -->
+      <div class="month-card">
+        <div class="month-head" style="background:var(--accent);">
+          <div class="month-label">APRIL · 4월</div>
+          <div class="month-title" spellcheck="false">세팅 완성 + 첫 런칭</div>
+          <div class="month-target" spellcheck="false">목표 17억 · 공헌이익률 15% · CI 2.55억</div>
+        </div>
+        <div class="month-body">
+          <div>
+            <div class="month-strategy-title">매출 드라이브</div>
+            <ul class="month-list">
+              <li spellcheck="false"><strong>목베개플러스</strong> 기존 킬콘 소재 유지·최적화</li>
+              <li spellcheck="false"><strong>목마사지베개V2</strong> 4월 초 런칭, V1→V2 전환 유도 소재 집중</li>
+              <li spellcheck="false"><strong>골반마사지기</strong> 4월 말 런칭, 초기 테스트 소재 3종 집행</li>
+              <li spellcheck="false">허리·발편한케어 광고비 효율화 (비효율 채널 중단)</li>
+            </ul>
+          </div>
+          <div>
+            <div class="month-strategy-title">팀 운영</div>
+            <ul class="month-list">
+              <li spellcheck="false">희강님 2팀 온보딩 + PD 면담 시작</li>
+              <li spellcheck="false">오도근님 3/30 합류 → 부진 SKU 진단 착수</li>
+              <li spellcheck="false">팀별 KPI 설정 + 주간 리뷰 루틴 가동</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5월 -->
+      <div class="month-card">
+        <div class="month-head" style="background:var(--accent2);">
+          <div class="month-label">MAY · 5월 🎁 가정의달</div>
+          <div class="month-title" spellcheck="false">최대 드라이브</div>
+          <div class="month-target" spellcheck="false">목표 20억 · 공헌이익률 13% · CI 2.6억</div>
+        </div>
+        <div class="month-body">
+          <div>
+            <div class="month-strategy-title">매출 드라이브</div>
+            <ul class="month-list">
+              <li spellcheck="false"><strong>가정의달 프로모션</strong> — 목베개 시리즈 번들/기획전 집중</li>
+              <li spellcheck="false"><strong>V2</strong> 5월 월 3억 달성 — 광고비 집중 투입</li>
+              <li spellcheck="false"><strong>골반마사지기</strong> 본격 광고 집행 (4월 테스트 기반 확장)</li>
+              <li spellcheck="false"><strong>팔꿈치마사지기</strong> 5/16 런칭 + 가정의달 선물 연계</li>
+              <li spellcheck="false"><strong>바디풀·훌라핏</strong> 5/26~27 인플 콘텐츠 게시 집중 관리</li>
+              <li spellcheck="false">발편한케어 <strong>흑자 전환 → 공헌이익률 8%</strong> — 개선 소재 집행</li>
+            </ul>
+          </div>
+          <div>
+            <div class="month-strategy-title">6월 런칭 사전 준비</div>
+            <ul class="month-list">
+              <li spellcheck="false"><strong>허리마사지기V3 (6/15)</strong> — V2 성과 데이터 분석 완료 · V3 개선 포인트 소재화 · 상세페이지 V3 버전 제작 · 기존 허리편케 고객 CRM 세그먼트 설정</li>
+              <li spellcheck="false"><strong>넥코어 목마사지 (6/29)</strong> — 목 스트레칭 카테고리 포지셔닝 확정 · 킬콘 소재 방향 기획 · 목베개 기존 고객 CRM 타겟 세그먼트 구성 · BM팀 인플 연계 검토</li>
+            </ul>
+          </div>
+          <div>
+            <div class="month-strategy-title">핵심 체크</div>
+            <ul class="month-list">
+              <li spellcheck="false">5/12 전 인플 계약 완료 + 콘텐츠 검수</li>
+              <li spellcheck="false">2팀 PD→마케터 전환 중간 점검</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6월 -->
+      <div class="month-card">
+        <div class="month-head" style="background:var(--purple);">
+          <div class="month-label">JUNE · 6월</div>
+          <div class="month-title" spellcheck="false">검증 + Q3 준비</div>
+          <div class="month-target" spellcheck="false">목표 22억 · 공헌이익률 12% · CI 2.64억</div>
+        </div>
+        <div class="month-body">
+          <div>
+            <div class="month-strategy-title">매출 드라이브</div>
+            <ul class="month-list">
+              <li spellcheck="false"><strong>허리마사지기V3</strong> 6/15 런칭 — V2 고객 업그레이드 유도</li>
+              <li spellcheck="false"><strong>넥코어 목마사지</strong> 6/29 런칭 — 목베개 고객 CRM 타겟팅</li>
+              <li spellcheck="false">골반·팔꿈치 <strong>ROAS 검증</strong> 후 스케일업 여부 결정</li>
+              <li spellcheck="false">5월 인플 2종 성과 분석 → 2차 확산 전략 실행</li>
+            </ul>
+          </div>
+          <div>
+            <div class="month-strategy-title">Q3 준비</div>
+            <ul class="month-list">
+              <li spellcheck="false">희강·도근님 <strong>5주차 과제 발표</strong></li>
+              <li spellcheck="false">전체 공헌이익률 12~14% 달성 확인 (신제품 드라이브 반영)</li>
+              <li spellcheck="false">바텀업 Q3 사업계획 수립 시작</li>
+              <li spellcheck="false">관절 카테고리 확장 로드맵 초안</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 07. SKU별 매출 목표 ── -->
+  <div class="section" id="sec-07">
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title" spellcheck="false">SKU별 매출 목표</div>
+      <div class="section-line"></div>
+    </div>
+
+    <div style="margin-bottom:14px;font-size:12px;color:var(--text-muted);">
+      4월 <strong style="color:var(--accent);">17억·15%</strong> / 5월 <strong style="color:var(--accent);">20억·13%</strong> / 6월 <strong style="color:var(--accent);">22억·12%</strong> → 분기 공헌이익 <strong style="color:var(--accent2);">7.5억</strong>. SKU별 배분은 4월 실적 기반으로 월 초 조정.
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
+      <table class="dual-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;vertical-align:middle;">SKU</th>
+            <th style="vertical-align:middle;width:65px;">구분</th>
+            <th class="col-h-real">4월</th>
+            <th class="col-h-real">5월</th>
+            <th class="col-h-real">6월</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td spellcheck="false">목베개플러스</td>
+            <td spellcheck="false"><span class="b b-gray">기존</span></td>
+            <td spellcheck="false">6.5</td><td spellcheck="false">6.0 <span style="font-size:10px;color:var(--text-dim);">↓잠식</span></td><td spellcheck="false">5.5</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">목마사지베개V2</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td style="color:var(--accent);font-weight:600;" spellcheck="false">2.0</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">3.0</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">3.5</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">허리편한케어</td>
+            <td spellcheck="false"><span class="b b-gray">기존</span></td>
+            <td spellcheck="false">1.5</td><td spellcheck="false">1.5</td><td spellcheck="false">1.5</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">발편한케어</td>
+            <td spellcheck="false"><span class="b b-gray">기존</span></td>
+            <td spellcheck="false">0.8</td><td spellcheck="false">1.0</td><td spellcheck="false">0.9</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">골반마사지기</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td style="color:var(--accent);font-weight:600;" spellcheck="false">0.08 <span style="font-size:10px;color:var(--text-dim);">4/27~</span></td><td style="color:var(--accent);font-weight:600;" spellcheck="false">0.93</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">1.05</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">팔꿈치마사지기</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td spellcheck="false">—</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">0.6</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">1.2</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">바디풀고컷</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td spellcheck="false">—</td><td style="color:var(--warn);font-style:italic;" spellcheck="false">인플 선정 후 확정</td><td style="color:var(--warn);font-style:italic;" spellcheck="false">미정</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">훌라핏벨트</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td spellcheck="false">—</td><td style="color:var(--warn);font-style:italic;" spellcheck="false">인플 선정 후 확정</td><td style="color:var(--warn);font-style:italic;" spellcheck="false">미정</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">허리마사지기V3</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td spellcheck="false">—</td><td spellcheck="false">—</td><td style="color:var(--purple);font-weight:600;" spellcheck="false">V2+30%</td>
+          </tr>
+          <tr>
+            <td spellcheck="false">넥코어 목마사지</td>
+            <td spellcheck="false"><span class="b b-warn" style="font-size:10px;">신제품</span></td>
+            <td spellcheck="false">—</td><td spellcheck="false">—</td><td style="color:var(--accent);font-weight:600;" spellcheck="false">0.3</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="2" spellcheck="false">월 합계 목표</td>
+            <td style="color:var(--accent);font-size:15px;" spellcheck="false">17억</td>
+            <td style="color:var(--accent);font-size:15px;" spellcheck="false">20억</td>
+            <td style="color:var(--accent);font-size:15px;" spellcheck="false">22억</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="background:var(--accent-light);border:1px solid #bfd0e0;border-radius:12px;padding:20px 24px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:center;">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Q2 매출 목표</div>
+          <div style="font-size:34px;font-weight:900;color:var(--accent);letter-spacing:-0.02em;">59억</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">4월 17억 · 5월 20억 · 6월 22억</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">분기 공헌이익 목표</div>
+          <div style="font-size:34px;font-weight:900;color:var(--accent2);letter-spacing:-0.02em;">7.5억</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">월 2.5억 × 3개월 — 전사 지속가능성 마지노선</div>
+        </div>
+        <div style="background:var(--warn-light);border:1px solid #f0c88a;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;color:var(--warn);font-weight:700;margin-bottom:6px;">⚠️ 바디풀고컷·훌라핏벨트</div>
+          <div style="font-size:12px;color:var(--text-muted);">인플 선정 완료(4월 말) 후 목표 확정. 확정 시 월 합계 상향 가능</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 08. 런칭 준비 사항 ── -->
+  <div class="section" id="sec-08">
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title" spellcheck="false">런칭 준비 사항</div>
+      <div class="section-line"></div>
+    </div>
+    <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;">각 런칭일 기준 2주 전 완료 필요 항목. 준비 미완 시 런칭 지연 위험.</div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;">
+      <table class="prep-table">
+        <thead>
+          <tr>
+            <th style="width:120px;">제품</th>
+            <th style="width:75px;">런칭일</th>
+            <th>마케팅 준비</th>
+            <th>협업 준비</th>
+            <th style="width:85px;">담당</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">목마사지베개V2</td>
+            <td spellcheck="false"><span class="b b-blue">4월 초</span></td>
+            <td spellcheck="false">V2 킬콘 소재 완성 · V1 vs V2 전환 메시지 · 채널별 집행 플랜</td>
+            <td spellcheck="false">MD허브팀 쇼핑라이브 · 상품전략팀 GWP (2종)</td>
+            <td spellcheck="false"><span class="b b-blue">1팀·2팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">골반마사지기</td>
+            <td spellcheck="false"><span class="b b-blue">4월 말</span></td>
+            <td spellcheck="false">타겟·메시지 정의 · 테스트 소재 3종 준비 · Meta 우선 집행</td>
+            <td spellcheck="false">MD허브팀 전문의/입점 소스 · BM팀 인플 협업 SOP 수급</td>
+            <td spellcheck="false"><span class="b b-purple">3팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">팔꿈치마사지기</td>
+            <td spellcheck="false"><span class="b b-blue">5/16~</span></td>
+            <td spellcheck="false">관절 카테고리 연계 메시지 · 가정의달 프로모션 연계 소재</td>
+            <td spellcheck="false">계획 중</td>
+            <td spellcheck="false"><span class="b b-purple">3팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">바디풀고컷</td>
+            <td spellcheck="false"><span class="b b-green">5/26</span></td>
+            <td spellcheck="false">인플 선정·계약 (5/12 전) · 콘텐츠 방향 브리핑 · 2차 확산 소재</td>
+            <td spellcheck="false">PA 광고 소스 수급 협업 플레이</td>
+            <td spellcheck="false"><span class="b b-warn">BM+2팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">훌라핏벨트</td>
+            <td spellcheck="false"><span class="b b-green">5/27</span></td>
+            <td spellcheck="false">인플 선정·계약 (5/13 전) · 바디풀 연계 프로모션 검토</td>
+            <td spellcheck="false">PA 광고 소스 수급 협업 플레이</td>
+            <td spellcheck="false"><span class="b b-warn">BM+2팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">허리마사지기V3</td>
+            <td spellcheck="false"><span class="b b-purple">6/15</span></td>
+            <td spellcheck="false">V2 성과 데이터 분석 → V3 개선 포인트 소재화 · V2 대비 +30% 근거 수립 <strong style="color:var(--warn);">(5월 초~중 준비)</strong></td>
+            <td spellcheck="false">상세페이지 V3 강화 버전 제작 · 허리편케 기존 고객 CRM 세그먼트 설정 <strong style="color:var(--warn);">(5월 초~중 준비)</strong></td>
+            <td spellcheck="false"><span class="b b-purple">3팀</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text);" spellcheck="false">넥코어 목마사지</td>
+            <td spellcheck="false"><span class="b b-purple">6/29</span></td>
+            <td spellcheck="false">목 스트레칭 카테고리 포지셔닝 확정 · 킬콘 소재 방향 기획 · 소재 제작 착수 <strong style="color:var(--warn);">(5월 초~중 준비)</strong></td>
+            <td spellcheck="false">목베개 기존 고객 CRM 타겟 세그먼트 구성 · BM팀 인플 연계 검토 <strong style="color:var(--warn);">(5월 초~중 준비)</strong></td>
+            <td spellcheck="false"><span class="b b-blue">1팀·3팀</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<script>
+  // ── 사이드 네비 ──
+  const NAV_ITEMS = [
+    { id: 'sec-01', num: '01', label: '현황 & 목표' },
+    { id: 'sec-02', num: '02', label: '개선 필요 지점' },
+    { id: 'sec-03', num: '03', label: '전략 방향' },
+    { id: 'sec-04', num: '04', label: '팀별 목표 & 전략' },
+    { id: 'sec-05', num: '05', label: '런칭 캘린더' },
+    { id: 'sec-06', num: '06', label: '월별 드라이브' },
+    { id: 'sec-07', num: '07', label: 'SKU별 매출 목표' },
+    { id: 'sec-08', num: '08', label: '런칭 준비 사항' },
+  ];
+
+  const nav = document.getElementById('sideNav');
+  if (nav) {
+    const labelEl = document.createElement('div');
+    labelEl.className = 'nav-label';
+    labelEl.textContent = 'Contents';
+    nav.appendChild(labelEl);
+
+    NAV_ITEMS.forEach(item => {
+      const a = document.createElement('a');
+      a.href = '#' + item.id;
+      a.innerHTML = '<span class="nav-num">' + item.num + '</span><span>' + item.label + '</span>';
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.getElementById(item.id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      nav.appendChild(a);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          nav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+          const active = nav.querySelector('a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -75% 0px' });
+
+    NAV_ITEMS.forEach(item => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  // ── 수정 모드 토글 ──
+  const EDITABLE_SELECTORS = [
+    'h1', 'h2', 'h3',
+    '.hero-sub', '.hero-eyebrow',
+    '.section-title',
+    '.q-metric-value', '.q-metric-label', '.q-metric-sub',
+    '.diag-title', '.diag-desc',
+    '.pillar-title', '.pillar-list li',
+    '.team-name', '.team-lead', '.team-kpi-label', '.team-list li',
+    '.launch-name', '.launch-target-label',
+    '.month-title', '.month-target', '.month-list li',
+    '.exec-title', '.exec-desc',
+    '.dual-table td', '.prep-table td',
+    '.hero-chip',
+  ].join(',');
+
+  let editMode = false;
+
+  function toggleEdit() {
+    editMode = !editMode;
+    const btn = document.getElementById('editBtn');
+    const body = document.body;
+    if (editMode) {
+      body.classList.add('edit-mode');
+      btn.innerHTML = '<span>✅</span><span>수정 완료</span>';
+      btn.classList.add('active');
+      document.querySelectorAll(EDITABLE_SELECTORS).forEach(el => {
+        el.setAttribute('contenteditable', 'true');
+        el.setAttribute('spellcheck', 'false');
+      });
+    } else {
+      body.classList.remove('edit-mode');
+      btn.innerHTML = '<span>✏️</span><span>수정하기</span>';
+      btn.classList.remove('active');
+      document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        el.removeAttribute('contenteditable');
+      });
+    }
+  }
+
+  // ── 다운로드 ──
+  function downloadHTML() {
+    if (editMode) toggleEdit();
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '라이프마케팅실_2분기전략보고.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body></html>
